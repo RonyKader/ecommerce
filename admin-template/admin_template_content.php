@@ -1,10 +1,8 @@
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	<div class="admin-content">
-		<h2>ADMIN CONTENT AREA</h2>	
+		<h2>ADMIN CONTENT AREA</h2>
 
-
-		<?php 
-
+		<?php
 		if ( $get_subject_id ) {
 			$show_subject = select_subject_byid( $get_subject_id );
 			echo "<h3>" . $show_subject[ 'menu_name' ] . "</h3>";

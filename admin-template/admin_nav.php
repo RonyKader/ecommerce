@@ -5,39 +5,27 @@
 			<div class="bs-example">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
-                <?php 
-                	$sql_view = "SELECT * FROM menus";
-                	$sql_query = mysqli_query( $connection, $sql_view );               	
-                	 
+                <?php
+                	$sql_query = show_nav();               	 
                 	 while ( $row = $row = mysqli_fetch_assoc( $sql_query ) ) {
                 	 	?>
 	                    <a style="display:inline-block; width:100%;" class="chef-panel panel-heading panel-title" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $row[ 'id' ];?>">
 	                    	<i class="fa fa-hand-o-right"></i> <?php echo $row[ 'menu_name' ];?>
 	                    </a>    
 	                    <div id="<?php echo $row[ 'id' ];?>" class="panel-collapse collapse">
-	                    <?php 
-	                    	$sql_sub = "SELECT * FROM category WHERE page_id = {$row['id']}";
-	                    	$qu = mysqli_query( $connection, $sql_sub );
-
-	                    	while ( $sub = mysqli_fetch_assoc( $qu ) ) {
-	                    		?>
-
+		                    <?php 
+		                       $qu = show_category( $row['id'] );
+		                       while ( $sub = mysqli_fetch_assoc( $qu ) ) {
+		                    ?>
 	                        <div class="panel-body">
 	                            <ul class="list-unstyled">
 	                            	<li><a href="#"><?php echo $sub['cat_name']; ?></a></li>
 	                            	
 	                            </ul>
 	                        </div>
-
-	                    		<?php
-	                    	}
-	                     ?>                 
+	                    	<?php }  ?>                 
 	                    </div>
-
-                	 	<?
-                	 }
-
-                 ?>                              
+                	 	<?php } ?>                              
            
                 </div>
              <!-- End of Question section one -->
